@@ -1,4 +1,4 @@
-import {Component,OnInit} from '@angular/core';
+import {Component,OnInit,OnChanges} from '@angular/core';
 import {ChatRoomService} from '../../services/chat-room.service';
 
 @Component({
@@ -9,18 +9,21 @@ import {ChatRoomService} from '../../services/chat-room.service';
 export class ChatRoomComponent implements OnInit {
 
     componentName = 'Chat room';
-    msg: string;
+    msgs: any[];
+    msgInp:any;
 
     constructor(private chatRoomService: ChatRoomService) {}
 
     ngOnInit() {
+        this.msgs = [];
         this.chatRoomService.getMessage()
                             .subscribe(msg => {
-                                this.msg = "1st "+msg;
+                                this.msgs.push(msg);
                             });
     }
 
     sendMsg(msg) {
+        this.msgInp = '';
         this.chatRoomService.sendMessage(msg);
     }
     

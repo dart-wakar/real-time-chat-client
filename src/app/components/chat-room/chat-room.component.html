@@ -1,7 +1,11 @@
 <h1>{{componentName}}</h1>
 <div>
-    <input type="text" #msgInput name="" value="">
+    <input [(ngModel)]="msgInp" type="text" #msgInput name="" value="">
     <button (click)="sendMsg(msgInput.value)">Send</button>
     <br>
-    <p>{{msg}}  </p>
+    <div>
+        <ul>
+            <li *ngFor="let mg of msgs">{{mg}}</li>
+        </ul>
+    </div>
 </div>
