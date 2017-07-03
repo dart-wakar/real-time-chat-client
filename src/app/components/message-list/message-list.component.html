@@ -1,0 +1,7 @@
+<div *ngIf = "messages">
+    <ul>
+        <li *ngFor="let msg of messages">
+            <message [message]="msg"></message>
+        </li>
+    </ul>
+</div>

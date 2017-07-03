@@ -8,6 +8,8 @@ import {AppRoutingModule} from './app.routing';
 
 import { AppComponent } from './app.component';
 import {ChatRoomComponent} from './components/chat-room/chat-room.component';
+import {MessageListComponent} from './components/message-list/message-list.component';
+import {MessageComponent} from './components/message/message.component';
 
 import {ChatRoomService} from './services/chat-room.service';
 
@@ -16,7 +18,9 @@ const socketConfig: SocketIoConfig = {url: 'http://localhost:3000',options: {}};
 @NgModule({
   declarations: [
     AppComponent,
-    ChatRoomComponent
+    ChatRoomComponent,
+    MessageListComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

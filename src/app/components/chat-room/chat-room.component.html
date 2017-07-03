@@ -4,8 +4,6 @@
     <button (click)="sendMsg(msgInput.value)">Send</button>
     <br>
     <div>
-        <ul>
-            <li *ngFor="let mg of msgs">{{mg}}</li>
-        </ul>
+        <message-list [messages]="msgs"></message-list>
     </div>
 </div>
