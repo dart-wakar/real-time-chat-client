@@ -26,4 +26,9 @@ export class ChatRoomService {
                             .map(data => data);
      }
 
+     getInitialMessages() {
+         return this.socket.fromEvent<any>('initial messages')
+                            .map(data => data);
+     }
+     
 }

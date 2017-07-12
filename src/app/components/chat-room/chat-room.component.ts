@@ -16,6 +16,11 @@ export class ChatRoomComponent implements OnInit {
 
     ngOnInit() {
         this.msgs = [];
+        this.chatRoomService.getInitialMessages()
+                            .subscribe(data => {
+                                console.log(data);
+                                this.msgs = data;
+                            });
         this.chatRoomService.getMessage()
                             .subscribe(msg => {
                                 this.msgs.push(msg);

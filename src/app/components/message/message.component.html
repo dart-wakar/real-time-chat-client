@@ -5,4 +5,7 @@
     <div *ngIf="message.msg">
         <span>{{message.username}} : {{message.msg.message}}</span>
     </div>
+    <div *ngIf="message.user">
+        <span>{{message.user.username}} : {{message.message}}</span>
+    </div>
 </div>

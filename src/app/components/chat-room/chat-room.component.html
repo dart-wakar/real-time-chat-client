@@ -3,7 +3,7 @@
     <input [(ngModel)]="msgInp" type="text" #msgInput name="" value="">
     <button (click)="sendMsg(msgInput.value)">Send</button>
     <br>
-    <div>
+    <div *ngIf="msgs">
         <message-list [messages]="msgs"></message-list>
     </div>
 </div>
