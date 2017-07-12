@@ -17,4 +17,13 @@ export class ChatRoomService {
          this.socket.emit('msg',msg);
      }
 
+     login(username: string) {
+         this.socket.emit('login',username);
+     }
+
+     getNewUserConnection() {
+         return this.socket.fromEvent<any>('new user connected')
+                            .map(data => data);
+     }
+
 }

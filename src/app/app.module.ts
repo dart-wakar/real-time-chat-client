@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import {ChatRoomComponent} from './components/chat-room/chat-room.component';
 import {MessageListComponent} from './components/message-list/message-list.component';
 import {MessageComponent} from './components/message/message.component';
+import {LoginComponent} from './components/login/login.component';
 
 import {ChatRoomService} from './services/chat-room.service';
 
@@ -20,7 +21,8 @@ const socketConfig: SocketIoConfig = {url: 'http://localhost:3000',options: {}};
     AppComponent,
     ChatRoomComponent,
     MessageListComponent,
-    MessageComponent
+    MessageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

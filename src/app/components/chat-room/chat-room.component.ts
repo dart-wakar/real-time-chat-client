@@ -20,6 +20,11 @@ export class ChatRoomComponent implements OnInit {
                             .subscribe(msg => {
                                 this.msgs.push(msg);
                             });
+        this.chatRoomService.getNewUserConnection()
+                            .subscribe(data => {
+                                console.log(data);
+                                this.msgs.push(data);
+                            });
     }
 
     sendMsg(msg) {
