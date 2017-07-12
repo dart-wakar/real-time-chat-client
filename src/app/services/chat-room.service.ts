@@ -36,4 +36,22 @@ export class ChatRoomService {
                             .map(data => data);
      }
 
+     userTyping(message: any) {
+         this.socket.emit('user typing',message);
+     }
+
+     getUserTyping() {
+         return this.socket.fromEvent<any>('typing now')
+                            .map(data => data);
+     }
+
+     stopUserTyping(msg: any) {
+         this.socket.emit('stop typing',msg);
+     }
+
+     getStoppedTyping() {
+         return this.socket.fromEvent<any>('stopped typing')
+                            .map(data => data);
+     }
+     
 }

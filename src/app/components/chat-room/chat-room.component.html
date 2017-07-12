@@ -1,6 +1,9 @@
 <h1>{{componentName}}</h1>
 <div>
-    <input [(ngModel)]="msgInp" type="text" #msgInput name="" value="">
+    <div *ngIf="someoneTyping" style="color: red">
+        <span>{{typingUser}} is typing</span>
+    </div>
+    <input [(ngModel)]="msgInp" type="text" #msgInput name="" value="" (keypress)="userTyping($event.target.value)">
     <button (click)="sendMsg(msgInput.value)">Send</button>
     <br>
     <div *ngIf="msgs">
