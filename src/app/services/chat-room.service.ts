@@ -10,7 +10,7 @@ export class ChatRoomService {
 
      getMessage() {
          return this.socket.fromEvent<any>('msg')
-                            .map(data => data.msg);
+                            .map(data => data);
      }
 
      sendMessage(msg: string) {
