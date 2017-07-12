@@ -30,5 +30,10 @@ export class ChatRoomService {
          return this.socket.fromEvent<any>('initial messages')
                             .map(data => data);
      }
-     
+
+     userDisconnected() {
+         return this.socket.fromEvent<any>('user disconnect')
+                            .map(data => data);
+     }
+
 }

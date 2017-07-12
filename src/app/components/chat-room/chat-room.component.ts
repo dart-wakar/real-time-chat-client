@@ -30,6 +30,10 @@ export class ChatRoomComponent implements OnInit {
                                 console.log(data);
                                 this.msgs.push(data);
                             });
+        this.chatRoomService.userDisconnected()
+                            .subscribe(data => {
+                                this.msgs.push(data);
+                            })
     }
 
     sendMsg(msg) {

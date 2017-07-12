@@ -8,4 +8,7 @@
     <div *ngIf="message.user">
         <span>{{message.user.username}} : {{message.message}}</span>
     </div>
+    <div *ngIf="message.disconnected_username">
+        <span>{{message.disconnected_username}} disconnected on {{message.disconnect_time | date: 'medium' }}</span>
+    </div>
 </div>
