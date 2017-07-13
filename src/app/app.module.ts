@@ -11,8 +11,10 @@ import {ChatRoomComponent} from './components/chat-room/chat-room.component';
 import {MessageListComponent} from './components/message-list/message-list.component';
 import {MessageComponent} from './components/message/message.component';
 import {LoginComponent} from './components/login/login.component';
+import {UserStatusComponent} from './components/user-status/user-status.component';
 
 import {ChatRoomService} from './services/chat-room.service';
+import {UserService} from './services/user.service';
 
 const socketConfig: SocketIoConfig = {url: 'http://localhost:3000',options: {}};
 
@@ -22,7 +24,8 @@ const socketConfig: SocketIoConfig = {url: 'http://localhost:3000',options: {}};
     ChatRoomComponent,
     MessageListComponent,
     MessageComponent,
-    LoginComponent
+    LoginComponent,
+    UserStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ const socketConfig: SocketIoConfig = {url: 'http://localhost:3000',options: {}};
     SocketIoModule.forRoot(socketConfig)
   ],
   providers: [
-    ChatRoomService
+    ChatRoomService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

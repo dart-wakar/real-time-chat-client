@@ -1,0 +1,12 @@
+<div>
+    <div *ngIf="onlineUsers" style="color: green">
+        <ul>
+            <li *ngFor="let onlineUser of onlineUsers">{{onlineUser.username}}</li>
+        </ul>
+    </div>
+    <div *ngIf="offlineUsers" style="color: red">
+        <ul>
+            <li *ngFor="let offlineUser of offlineUsers">{{offlineUser.username}}</li>
+        </ul>
+    </div>
+</div>
