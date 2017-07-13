@@ -32,6 +32,11 @@ export class UserStatusComponent implements OnInit {
                 console.log(user);
                 this.onlineUsers.push(user);
             });
+        this.chatRoomService.getUserOffline()
+            .subscribe(user => {
+                console.log(user);
+                this.offlineUsers.push(user);
+            })
     }
 
 }

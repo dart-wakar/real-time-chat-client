@@ -53,5 +53,10 @@ export class ChatRoomService {
          return this.socket.fromEvent<any>('stopped typing')
                             .map(data => data);
      }
+
+     getUserOffline() {
+         return this.socket.fromEvent<any>('offline user')
+                            .map(data => data);
+     }
      
 }
