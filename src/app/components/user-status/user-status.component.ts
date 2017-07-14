@@ -28,14 +28,14 @@ export class UserStatusComponent implements OnInit {
                 this.offlineUsers = offlineUsers;
             });
         this.chatRoomService.getNewUserConnection()
-            .subscribe(user => {
-                console.log(user);
-                this.onlineUsers.push(user);
+            .subscribe(data => {
+                console.log(data);
+                this.onlineUsers.push(data.user);
             });
         this.chatRoomService.getUserOffline()
-            .subscribe(user => {
-                console.log(user);
-                this.offlineUsers.push(user);
+            .subscribe(data => {
+                console.log(data);
+                this.offlineUsers.push(data.user);
             })
     }
 

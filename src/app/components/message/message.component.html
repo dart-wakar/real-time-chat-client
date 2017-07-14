@@ -1,6 +1,6 @@
 <div *ngIf="message">
     <div *ngIf="message.time">
-        <span>{{message.username}} connected on {{message.time | date: 'medium'}}</span>
+        <span>{{message.user.username}} connected on {{message.time | date: 'medium'}}</span>
     </div>
     <div *ngIf="message.msg">
         <span>{{message.username}} : {{message.msg.message}}</span>
