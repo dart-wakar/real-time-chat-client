@@ -1,4 +1,4 @@
-import {Component,OnInit,OnChanges} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {ChatRoomService} from '../../services/chat-room.service';
 import {UserStatusHandler} from '../../classes/user-status.handler';
@@ -8,7 +8,7 @@ import {UserStatusHandler} from '../../classes/user-status.handler';
     templateUrl: './user-status.component.html'
 })
 
-export class UserStatusComponent implements OnInit,OnChanges {
+export class UserStatusComponent implements OnInit {
 
     onlineUsers: any;
     offlineUsers: any;
@@ -31,33 +31,29 @@ export class UserStatusComponent implements OnInit,OnChanges {
                 this.userStatusHandler = new UserStatusHandler(this.onlineUsers,this.offlineUsers);
             });
         this.chatRoomService.getNewUserConnection()
-                .subscribe(data => {
-                    if(this.userStatusHandler !== undefined) {
-                        console.log(data);
-                        this.onlineUsers.push(data.user);
-                        this.userStatusHandler.userCameOnline(data.user);
-                        console.log(this.userStatusHandler.getOfflineUsers());
-                        console.log(this.userStatusHandler.getOfflineUsersIds());
-                        console.log(this.userStatusHandler.getOnlineUsers());
-                        console.log(this.userStatusHandler.getOnlineUsersIds());
-                    }                    
-                });
-            this.chatRoomService.getUserOffline()
-                .subscribe(data => {
-                    if(this.userStatusHandler !== undefined) {
-                        console.log(data);
-                        this.offlineUsers.push(data.user);
-                        this.userStatusHandler.userWentOffline(data.user);
-                        console.log(this.userStatusHandler.getOfflineUsers());
-                        console.log(this.userStatusHandler.getOfflineUsersIds());
-                        console.log(this.userStatusHandler.getOnlineUsers());
-                        console.log(this.userStatusHandler.getOnlineUsersIds());
-                    }
-                });
-    }
-
-    ngOnChanges() {
-
+            .subscribe(data => {
+                if(this.userStatusHandler !== undefined) {
+                    console.log(data);
+                    this.onlineUsers.push(data.user);
+                    this.userStatusHandler.userCameOnline(data.user);
+                    console.log(this.userStatusHandler.getOfflineUsers());
+                    console.log(this.userStatusHandler.getOfflineUsersIds());
+                    console.log(this.userStatusHandler.getOnlineUsers());
+                    console.log(this.userStatusHandler.getOnlineUsersIds());
+                }                    
+            });
+        this.chatRoomService.getUserOffline()
+            .subscribe(data => {
+                if(this.userStatusHandler !== undefined) {
+                    console.log(data);
+                    this.offlineUsers.push(data.user);
+                    this.userStatusHandler.userWentOffline(data.user);
+                    console.log(this.userStatusHandler.getOfflineUsers());
+                    console.log(this.userStatusHandler.getOfflineUsersIds());
+                    console.log(this.userStatusHandler.getOnlineUsers());
+                    console.log(this.userStatusHandler.getOnlineUsersIds());
+                }
+            });
     }
 
 }
