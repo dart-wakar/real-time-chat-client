@@ -11,7 +11,7 @@ export class UserStatusHandler {
             this.onlineUsersIds.push(onlineUsers[j]._id);
             this.onlineUsers.push(onlineUsers[j]);
         }
-        for(k = 0;k < this.offlineUsers.length;k++) {
+        for(k = 0;k < offlineUsers.length;k++) {
             this.offlineUsersIds.push(offlineUsers[k]._id);
             this.offlineUsers.push(offlineUsers[k]);
         }

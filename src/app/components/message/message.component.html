@@ -5,7 +5,7 @@
     <div *ngIf="message.msg">
         <span>{{message.username}} : {{message.msg.message}}</span>
     </div>
-    <div *ngIf="message.user">
+    <div *ngIf="message.user && message.message">
         <span>{{message.user.username}} : {{message.message}}</span>
     </div>
     <div *ngIf="message.disconnected_username">
