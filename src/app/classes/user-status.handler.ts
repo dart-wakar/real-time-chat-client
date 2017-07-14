@@ -75,4 +75,12 @@ export class UserStatusHandler {
         return this.offlineUsersIds;
     }
 
+    public getOnlineUsersCount() {
+        return this.onlineUsers.length;
+    }
+
+    public getOfflineUsersCount() {
+        return this.offlineUsers.length;
+    }
+
 }
