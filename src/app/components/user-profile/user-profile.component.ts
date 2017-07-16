@@ -14,7 +14,7 @@ export class UserProfileComponent implements OnInit {
     userData: any;
     userStatus: any;
 
-    constructor(private userService: UserService,private activatedRoute: ActivatedRoute,location: Location,private router: Router) {}
+    constructor(private userService: UserService,private activatedRoute: ActivatedRoute,private location: Location,private router: Router) {}
 
     ngOnInit() {
         this.getUserProfileDataFromRoute();
@@ -27,5 +27,9 @@ export class UserProfileComponent implements OnInit {
                 this.userData = user;
                 this.userStatus = (this.userData.status === 2) ? 'Online' : 'Offline';
             },err => console.log(err));
+    }
+
+    goBack() {
+        this.location.back();
     }
 }
