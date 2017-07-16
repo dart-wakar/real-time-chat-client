@@ -1,0 +1,19 @@
+<div *ngIf="userData">
+    <h1>{{userData.username}}</h1>
+    <div *ngIf="userStatus">
+        <span>Status: {{userStatus}}</span>
+    </div>
+    <div>
+        <h3>Messages: </h3>
+        <div>
+            <ul>
+                <li *ngFor="let message of userData.messages">
+                    <div>
+                        <span><b>message: </b>{{message.message}}</span><br/>
+                        <span><b>sent on: </b>{{message.added | date: 'medium'}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

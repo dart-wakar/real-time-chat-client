@@ -10,6 +10,7 @@ export class UserService {
     constructor(private http: Http) {}
 
     private UsersUrl = API_URL+"users/";
+    private UserUrl = API_URL+"user/";
 
     getAllUsers() {
         return this.http.get(this.UsersUrl)
@@ -31,6 +32,15 @@ export class UserService {
 
     getOfflineUsers() {
         return this.http.get(this.UsersUrl+"offline/")
+                        .map((res) => res.json())
+                        .catch((err) => {
+                            console.log(err);
+                            return Observable.throw(err.json() || 'Server Error');
+                        });
+    }
+
+    getUserProfile(user_id: string) {
+        return this.http.get(this.UserUrl+user_id)
                         .map((res) => res.json())
                         .catch((err) => {
                             console.log(err);
