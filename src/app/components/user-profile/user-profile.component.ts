@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit {
         this.chatRoomService.getGoToPrivateChat()
             .subscribe(data => {
                 console.log(data);
+                this.router.navigate(['/privatechat',data.other_user._id]);
             });
     }
 

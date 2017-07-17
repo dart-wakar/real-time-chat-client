@@ -15,6 +15,7 @@ import {UserStatusComponent} from './components/user-status/user-status.componen
 import {UserListComponent} from './components/user-list/user-list.component';
 import {UserComponent} from './components/user/user.component';
 import {UserProfileComponent} from './components/user-profile/user-profile.component';
+import {PrivateChatRoomComponent} from './components/private-chat-room/private-chat-room.component';
 
 import {ChatRoomService} from './services/chat-room.service';
 import {UserService} from './services/user.service';
@@ -32,7 +33,8 @@ const socketConfig: SocketIoConfig = {url: 'http://localhost:3000',options: {}};
     UserStatusComponent,
     UserListComponent,
     UserComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PrivateChatRoomComponent
   ],
   imports: [
     BrowserModule,
