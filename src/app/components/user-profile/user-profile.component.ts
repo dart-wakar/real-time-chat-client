@@ -2,6 +2,7 @@ import {Component,OnInit} from '@angular/core';
 import {ActivatedRoute,Params,Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {UserService} from '../../services/user.service';
+import {ChatRoomService} from '../../services/chat-room.service';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -15,10 +16,14 @@ export class UserProfileComponent implements OnInit {
     userStatus: any;
     ifNotCurrentUser: boolean;
 
-    constructor(private userService: UserService,private activatedRoute: ActivatedRoute,private location: Location,private router: Router) {}
+    constructor(private userService: UserService,private chatRoomService: ChatRoomService,private activatedRoute: ActivatedRoute,private location: Location,private router: Router) {}
 
     ngOnInit() {
         this.getUserProfileDataFromRoute();
+        this.chatRoomService.getGoToPrivateChat()
+            .subscribe(data => {
+                console.log(data);
+            });
     }
 
     getUserProfileDataFromRoute() {
@@ -33,5 +38,9 @@ export class UserProfileComponent implements OnInit {
 
     goBack() {
         this.location.back();
+    }
+
+    goToPrivateChat() {
+        this.chatRoomService.doPrivateChat(this.userData);
     }
 }

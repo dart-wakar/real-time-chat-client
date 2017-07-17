@@ -58,5 +58,14 @@ export class ChatRoomService {
          return this.socket.fromEvent<any>('offline user')
                             .map(data => data);
      }
+
+     doPrivateChat(user: any) {
+         this.socket.emit('do private chat',user);
+     }
+
+     getGoToPrivateChat() {
+         return this.socket.fromEvent<any>('go to private chat')
+                            .map(data => data);
+     }
      
 }
