@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
         this.chatRoomService.getNewUserConnection()
                             .subscribe(data => {
                                 console.log(data);
+                                localStorage.setItem("currentUserId",data.user._id);
                             });
     }
 

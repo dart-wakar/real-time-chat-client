@@ -13,6 +13,7 @@ export class UserProfileComponent implements OnInit {
 
     userData: any;
     userStatus: any;
+    ifNotCurrentUser: boolean;
 
     constructor(private userService: UserService,private activatedRoute: ActivatedRoute,private location: Location,private router: Router) {}
 
@@ -25,6 +26,7 @@ export class UserProfileComponent implements OnInit {
             .subscribe(user => {
                 console.log(user);
                 this.userData = user;
+                this.ifNotCurrentUser = (this.userData._id === localStorage.getItem("currentUserId")) ? false : true;
                 this.userStatus = (this.userData.status === 2) ? 'Online' : 'Offline';
             },err => console.log(err));
     }
