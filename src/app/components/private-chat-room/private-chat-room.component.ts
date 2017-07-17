@@ -11,14 +11,19 @@ export class PrivateChatRoomComponent implements OnInit {
 
     otherUserId: any;
     inputMessage: any;
+    messages: any;
 
     constructor(private chatRoomService: ChatRoomService,private activatedRoute: ActivatedRoute,private router: Router) {}
 
     ngOnInit() {
+        this.messages = [];
         this.getOtherUserFromParams();
         console.log(this.otherUserId);
         this.chatRoomService.getPrivateMessage()
-            .subscribe(data => console.log(data));
+            .subscribe(data => {
+                console.log(data);
+                this.messages.push(data);
+            });
         /*this.chatRoomService.getGoToPrivateChat()
             .subscribe(data => console.log(data.room));*/
     }

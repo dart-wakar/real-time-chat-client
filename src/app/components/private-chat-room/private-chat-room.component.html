@@ -2,3 +2,8 @@
     <input type="text" placeholder="Enter message here" #inputMsg [(ngModel)]="inputMessage"/>
     <button (click)="sendMessage(inputMsg.value)">Send message</button>
 </div>
+<div *ngIf="messages">
+    <ul>
+        <li *ngFor="let message of messages">{{message.sender}} : {{message.message}}</li>
+    </ul>
+</div>
