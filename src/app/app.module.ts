@@ -18,6 +18,7 @@ import {UserProfileComponent} from './components/user-profile/user-profile.compo
 
 import {ChatRoomService} from './services/chat-room.service';
 import {UserService} from './services/user.service';
+import {MessageService} from './services/message.service';
 
 const socketConfig: SocketIoConfig = {url: 'http://localhost:3000',options: {}};
 
@@ -42,7 +43,8 @@ const socketConfig: SocketIoConfig = {url: 'http://localhost:3000',options: {}};
   ],
   providers: [
     ChatRoomService,
-    UserService
+    UserService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

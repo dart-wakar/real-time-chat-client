@@ -1,12 +1,13 @@
-import {Component,OnInit,OnChanges} from '@angular/core';
+import {Component,OnInit,OnChanges,OnDestroy} from '@angular/core';
 import {ChatRoomService} from '../../services/chat-room.service';
+import {MessageService} from '../../services/message.service';
 
 @Component({
     selector: 'chat-room',
     templateUrl: './chat-room.component.html'
 })
 
-export class ChatRoomComponent implements OnInit {
+export class ChatRoomComponent implements OnInit,OnDestroy {
 
     componentName = 'Chat room';
     msgs: any[];
@@ -15,11 +16,16 @@ export class ChatRoomComponent implements OnInit {
     someoneTyping: boolean;
     typingUser: any;
 
-    constructor(private chatRoomService: ChatRoomService) {}
+    constructor(private chatRoomService: ChatRoomService,private messageService: MessageService) {}
 
     ngOnInit() {
         this.msgs = [];
         this.someoneTyping = false;
+        this.messageService.getAllMessages()
+                            .subscribe(messages => {
+                                console.log(messages);
+                                this.msgs = messages;
+                            });
         this.chatRoomService.getInitialMessages()
                             .subscribe(data => {
                                 console.log(data);
@@ -48,6 +54,10 @@ export class ChatRoomComponent implements OnInit {
                                 this.someoneTyping = false;
                                 //this.typingUser = null;
                             })
+    }
+
+    ngOnDestroy() {
+        console.log('destroyed');
     }
 
     sendMsg(msg) {
