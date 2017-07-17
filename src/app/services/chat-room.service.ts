@@ -67,5 +67,14 @@ export class ChatRoomService {
          return this.socket.fromEvent<any>('go to private chat')
                             .map(data => data);
      }
+
+     sendPrivateMessage(message: any,otherUserId: any) {
+         this.socket.emit('send private message',{message: message,otherUserId: otherUserId});
+     }
+
+     getPrivateMessage() {
+         return this.socket.fromEvent<any>('got private message')
+                            .map(data => data);
+     }
      
 }

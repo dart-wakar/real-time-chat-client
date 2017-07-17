@@ -1,0 +1,4 @@
+<div>
+    <input type="text" placeholder="Enter message here" #inputMsg [(ngModel)]="inputMessage"/>
+    <button (click)="sendMessage(inputMsg.value)">Send message</button>
+</div>

@@ -10,15 +10,25 @@ import {ActivatedRoute,Params,Router} from '@angular/router';
 export class PrivateChatRoomComponent implements OnInit {
 
     otherUserId: any;
+    inputMessage: any;
 
     constructor(private chatRoomService: ChatRoomService,private activatedRoute: ActivatedRoute,private router: Router) {}
 
     ngOnInit() {
         this.getOtherUserFromParams();
         console.log(this.otherUserId);
+        this.chatRoomService.getPrivateMessage()
+            .subscribe(data => console.log(data));
+        /*this.chatRoomService.getGoToPrivateChat()
+            .subscribe(data => console.log(data.room));*/
     }
 
     getOtherUserFromParams() {
         this.otherUserId = this.activatedRoute.snapshot.params['other_user_id'];
+    }
+
+    sendMessage(msg: any) {
+        this.chatRoomService.sendPrivateMessage(msg,this.otherUserId);
+        this.inputMessage = '';
     }
 }
