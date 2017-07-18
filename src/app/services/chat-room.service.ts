@@ -76,5 +76,14 @@ export class ChatRoomService {
          return this.socket.fromEvent<any>('got private message')
                             .map(data => data);
      }
+
+     sendRequestForRoomName(otherUserId: any) {
+         this.socket.emit('request for room name',otherUserId);
+     }
+
+     getCurrentRoomName() {
+         return this.socket.fromEvent<any>('take room name')
+                            .map(data => data);
+     }
      
 }

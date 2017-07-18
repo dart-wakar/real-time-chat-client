@@ -1,5 +1,6 @@
 import {Component,OnInit} from '@angular/core';
 import {ChatRoomService} from '../../services/chat-room.service';
+import {RoomService} from '../../services/room.service';
 import {ActivatedRoute,Params,Router} from '@angular/router';
 
 @Component({
@@ -12,6 +13,8 @@ export class PrivateChatRoomComponent implements OnInit {
     otherUserId: any;
     inputMessage: any;
     messages: any;
+    room: any;
+    roomId: any;
 
     constructor(private chatRoomService: ChatRoomService,private activatedRoute: ActivatedRoute,private router: Router) {}
 
@@ -19,6 +22,14 @@ export class PrivateChatRoomComponent implements OnInit {
         this.messages = [];
         this.getOtherUserFromParams();
         console.log(this.otherUserId);
+        this.chatRoomService.sendRequestForRoomName(this.otherUserId);
+        this.chatRoomService.getCurrentRoomName()
+            .subscribe(data => {
+                console.log(data);
+                this.room = data;
+                this.roomId = data._id;
+                console.log(this.room);
+            })
         this.chatRoomService.getPrivateMessage()
             .subscribe(data => {
                 console.log(data);
