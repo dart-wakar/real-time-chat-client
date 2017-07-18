@@ -85,5 +85,23 @@ export class ChatRoomService {
          return this.socket.fromEvent<any>('take room name')
                             .map(data => data);
      }
+
+     userTypingInPrivateRoom(message: any,room_name: any) {
+         this.socket.emit('user typing private',{message: message,room_name: room_name});
+     }
+
+     stopUserTypingInPrivateRoom(message: any,room_name: any) {
+         this.socket.emit('stop typing private',{message: message,room_name: room_name});
+     }
+
+     getUserTypingInPrivate() {
+         return this.socket.fromEvent<any>('typing in private now')
+                            .map(data => data);
+     }
+
+     getUserStoppedTypingInPrivate() {
+         return this.socket.fromEvent<any>('stopped typing in private')
+                            .map(data => data);
+     }
      
 }

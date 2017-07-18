@@ -16,10 +16,14 @@ export class PrivateChatRoomComponent implements OnInit {
     messages: any;
     room: any;
     roomId: any;
+    someoneTyping: boolean;
+    typingUser: any;
+    typingTimer: any;
 
     constructor(private chatRoomService: ChatRoomService,private messageService: MessageService,private activatedRoute: ActivatedRoute,private router: Router) {}
 
     ngOnInit() {
+        this.someoneTyping = false;
         this.messages = [];
         this.getOtherUserFromParams();
         console.log(this.otherUserId);
@@ -41,6 +45,17 @@ export class PrivateChatRoomComponent implements OnInit {
                 console.log(data);
                 this.messages.push(data.message);
             });
+
+        this.chatRoomService.getUserTypingInPrivate()
+                            .subscribe(data => {
+                                this.someoneTyping = true;
+                                this.typingUser = data.username;
+                            });
+        this.chatRoomService.getUserStoppedTypingInPrivate()
+                            .subscribe(data => {
+                                this.someoneTyping = false;
+                                //this.typingUser = null;
+                            });
         /*this.chatRoomService.getGoToPrivateChat()
             .subscribe(data => console.log(data.room));*/
     }
@@ -52,5 +67,15 @@ export class PrivateChatRoomComponent implements OnInit {
     sendMessage(msg: any) {
         this.chatRoomService.sendPrivateMessage(msg,this.otherUserId);
         this.inputMessage = '';
+    }
+
+    userTyping(message: any) {
+        clearTimeout(this.typingTimer);
+        this.chatRoomService.userTypingInPrivateRoom(message,this.room.name);
+        var x = this;
+        this.typingTimer = setTimeout(function() {
+            x.chatRoomService.stopUserTypingInPrivateRoom(x.inputMessage,x.room.name);
+            clearTimeout(x.typingTimer);
+        },2000);
     }
 }

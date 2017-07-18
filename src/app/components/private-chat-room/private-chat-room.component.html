@@ -1,5 +1,8 @@
 <div>
-    <input type="text" placeholder="Enter message here" #inputMsg [(ngModel)]="inputMessage"/>
+    <div *ngIf="someoneTyping" style="color: red">
+        <span>{{typingUser}} is typing</span>
+    </div>
+    <input type="text" placeholder="Enter message here" #inputMsg [(ngModel)]="inputMessage" (keypress)="userTyping(inputMessage)"/>
     <button (click)="sendMessage(inputMsg.value)">Send message</button>
 </div>
 <div *ngIf="messages">
