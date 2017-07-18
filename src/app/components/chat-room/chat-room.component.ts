@@ -68,13 +68,11 @@ export class ChatRoomComponent implements OnInit,OnDestroy {
     userTyping(message: any) {
         clearTimeout(this.typingTimer);
         this.chatRoomService.userTyping(message);
-        this.typingTimer = setTimeout(this.doneTyping(this),3000);
-    }
-
-    doneTyping(x: any){
-        console.log('doneTyping',x);
-        x.chatRoomService.stopUserTyping(this.msgInp);
-        clearTimeout(x.typingTimer);
+        var x = this;
+        this.typingTimer = setTimeout(function() {
+            x.chatRoomService.stopUserTyping(x.msgInp);
+            clearTimeout(x.typingTimer);
+        },2000);
     }
     
 }
