@@ -12,7 +12,7 @@ export class MessageService {
     constructor(private http: Http) {}
 
     getAllMessages() {
-        return this.http.get(this.MessageUrl)
+        return this.http.get(this.MessageUrl+"default/")
                         .map((res) => res.json())
                         .catch((err) => {
                             console.log(err);
