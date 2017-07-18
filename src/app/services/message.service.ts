@@ -19,5 +19,19 @@ export class MessageService {
                             return Observable.throw(err.json() || 'Server Error');
                         });
     }
+
+    getAllMessagesForRoom(room_id: any) {
+        let header = new Headers();
+        header.append("Content-Type","application/json");
+        return this.http.post(this.MessageUrl+"byroomid/",JSON.stringify({room_id: room_id}),{headers: header})
+            .map((res) => {
+                console.log(res.json());
+                return res.json();
+            })
+            .catch((err) => {
+                console.log(err);
+                return Observable.throw(err.json() || 'Server Error');
+            });
+    }
     
 }

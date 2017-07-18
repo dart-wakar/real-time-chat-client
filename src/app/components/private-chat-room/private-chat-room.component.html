@@ -4,6 +4,6 @@
 </div>
 <div *ngIf="messages">
     <ul>
-        <li *ngFor="let message of messages">{{message.sender}} : {{message.message}}</li>
+        <li *ngFor="let message of messages">{{message.user.username}} : {{message.message}}</li>
     </ul>
 </div>

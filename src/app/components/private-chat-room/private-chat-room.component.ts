@@ -1,5 +1,6 @@
 import {Component,OnInit} from '@angular/core';
 import {ChatRoomService} from '../../services/chat-room.service';
+import {MessageService} from '../../services/message.service';
 import {RoomService} from '../../services/room.service';
 import {ActivatedRoute,Params,Router} from '@angular/router';
 
@@ -16,7 +17,7 @@ export class PrivateChatRoomComponent implements OnInit {
     room: any;
     roomId: any;
 
-    constructor(private chatRoomService: ChatRoomService,private activatedRoute: ActivatedRoute,private router: Router) {}
+    constructor(private chatRoomService: ChatRoomService,private messageService: MessageService,private activatedRoute: ActivatedRoute,private router: Router) {}
 
     ngOnInit() {
         this.messages = [];
@@ -28,12 +29,17 @@ export class PrivateChatRoomComponent implements OnInit {
                 console.log(data);
                 this.room = data;
                 this.roomId = data._id;
-                console.log(this.room);
-            })
+                console.log(this.roomId);
+                this.messageService.getAllMessagesForRoom(this.roomId)
+                    .subscribe(msgs => {
+                        console.log(msgs);
+                        this.messages = msgs;
+                    });
+            });
         this.chatRoomService.getPrivateMessage()
             .subscribe(data => {
                 console.log(data);
-                this.messages.push(data);
+                this.messages.push(data.message);
             });
         /*this.chatRoomService.getGoToPrivateChat()
             .subscribe(data => console.log(data.room));*/
