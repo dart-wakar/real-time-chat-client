@@ -1,4 +1,4 @@
-<div *ngIf="message">
+<div *ngIf="message" style="border: 5px solid #808080;border-radius: 10px;padding: 5px;margin: 10px;">
     <div *ngIf="message.time">
         <span>{{message.user.username}} connected on {{message.time | date: 'medium'}}</span>
     </div>

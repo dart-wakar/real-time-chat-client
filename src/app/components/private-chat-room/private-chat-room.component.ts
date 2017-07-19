@@ -6,7 +6,8 @@ import {ActivatedRoute,Params,Router} from '@angular/router';
 
 @Component({
     selector: 'private-chat-room',
-    templateUrl: './private-chat-room.component.html'
+    templateUrl: './private-chat-room.component.html',
+    styleUrls: ['./private-chat-room.component.css']
 })
 
 export class PrivateChatRoomComponent implements OnInit {

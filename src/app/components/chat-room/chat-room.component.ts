@@ -4,7 +4,8 @@ import {MessageService} from '../../services/message.service';
 
 @Component({
     selector: 'chat-room',
-    templateUrl: './chat-room.component.html'
+    templateUrl: './chat-room.component.html',
+    styleUrls: ['./chat-room.component.css']
 })
 
 export class ChatRoomComponent implements OnInit,OnDestroy {

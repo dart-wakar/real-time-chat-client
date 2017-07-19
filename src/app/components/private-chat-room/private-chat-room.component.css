@@ -1,0 +1,22 @@
+.sendButton {
+    overflow: hidden;
+    padding: 8px;
+    background-color: #000000;
+    color: #A9B7C6;
+    font-family: monospace;
+    margin-top: 20px;
+    border: 2px solid #A9B7C6;
+    border-radius: 10px;
+}
+
+.inpMsg {
+    width: 80%;
+    font-size: 20px;
+    align-self: center;
+    border-top: 2px solid #A9B7C6;
+    border-left: 2px solid #A9B7C6;
+    border-bottom: 2px solid #A9B7C6;
+    border-right: 2px solid #A9B7C6;
+    padding: 2px;
+    border-radius: 20px ;
+}

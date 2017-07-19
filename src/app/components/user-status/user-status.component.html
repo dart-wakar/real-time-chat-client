@@ -1,8 +1,14 @@
-<div>
-    <div *ngIf="onlineUsers" style="color: green">
-        <user-list [users]="onlineUsers"></user-list>
+<div class="userStatusContainer">
+    <div class="onlineUsersContainer">
+        <h4 style="text-align: center;background: #000000;color: wheat; padding: 10px;">Online Users</h4>
+        <div *ngIf="onlineUsers" style="color: green">
+            <user-list [users]="onlineUsers"></user-list>
+        </div>
     </div>
-    <div *ngIf="offlineUsers" style="color: red">
-        <user-list [users]="offlineUsers"></user-list>
+    <div class="offlineUsersContainer">
+        <h4 style="text-align: center;background: #000000;color: wheat;padding: 10px;">Offline Users</h4>
+        <div *ngIf="offlineUsers" style="color: red;">
+            <user-list [users]="offlineUsers"></user-list>
+        </div>
     </div>
 </div>

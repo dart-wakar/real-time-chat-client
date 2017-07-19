@@ -1,0 +1,41 @@
+.chatRoomContainer {
+    display:  flex;
+    flex-direction: row;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.chatContainer {
+    flex: 1 1 auto;
+}
+.userStatusContainer {
+    flex: 0 1 auto;
+    background-color: #808080;
+    width: 300px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.inputBar {
+    width: 80%;
+    font-size: 20px;
+    align-self: center;
+    border-top: 2px solid #A9B7C6;
+    border-left: 2px solid #A9B7C6;
+    border-bottom: 2px solid #A9B7C6;
+    border-right: 2px solid #A9B7C6;
+    padding: 2px;
+    border-radius: 20px ;
+}
+
+.sendButton {
+    overflow: hidden;
+    padding: 8px;
+    background-color: #000000;
+    color: #A9B7C6;
+    font-family: monospace;
+    width: 80px;
+    margin-top: 20px;
+    border: 2px solid #A9B7C6;
+    border-radius: 10px;
+}

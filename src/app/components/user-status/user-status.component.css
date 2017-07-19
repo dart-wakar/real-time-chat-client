@@ -1,0 +1,15 @@
+.userStatusContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+}
+
+.onlineUsersContainer {
+    flex: 1 1 auto;
+}
+
+.offlineUsersContainer {
+    flex: 1 1 auto;
+
+}
