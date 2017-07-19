@@ -7,9 +7,9 @@
     <button (click)="goToPrivateChat()">Private Chat</button>
     <div>
         <h3>Messages: </h3>
-        <div>
+        <div *ngIf="publicMessages">
             <ul>
-                <li *ngFor="let message of userData.messages">
+                <li *ngFor="let message of publicMessages">
                     <div>
                         <span><b>message: </b>{{message.message}}</span><br/>
                         <span><b>sent on: </b>{{message.added | date: 'medium'}}</span>

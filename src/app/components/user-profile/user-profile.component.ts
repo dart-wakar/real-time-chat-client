@@ -3,6 +3,7 @@ import {ActivatedRoute,Params,Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {UserService} from '../../services/user.service';
 import {ChatRoomService} from '../../services/chat-room.service';
+import {MessageService} from '../../services/message.service';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -12,14 +13,24 @@ import 'rxjs/add/operator/switchMap';
 
 export class UserProfileComponent implements OnInit {
 
+    userId: any;
     userData: any;
     userStatus: any;
     ifNotCurrentUser: boolean;
+    publicMessages: any;
 
-    constructor(private userService: UserService,private chatRoomService: ChatRoomService,private activatedRoute: ActivatedRoute,private location: Location,private router: Router) {}
+    constructor(private userService: UserService,private chatRoomService: ChatRoomService,private messageService: MessageService,private activatedRoute: ActivatedRoute,private location: Location,private router: Router) {}
 
     ngOnInit() {
+        this.userId = this.activatedRoute.snapshot.params['user_id'];
         this.getUserProfileDataFromRoute();
+        this.messageService.getPublicMessagesForUser(this.userId)
+            .subscribe(messages => {
+                console.log(messages);
+                this.publicMessages = messages;
+            },err => {
+                console.log(err);
+            });
         this.chatRoomService.getGoToPrivateChat()
             .subscribe(data => {
                 console.log(data);

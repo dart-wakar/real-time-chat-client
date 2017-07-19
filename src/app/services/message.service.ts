@@ -33,5 +33,19 @@ export class MessageService {
                 return Observable.throw(err.json() || 'Server Error');
             });
     }
+
+    getPublicMessagesForUser(user_id: any) {
+        let header = new Headers();
+        header.append("Content-Type","application/json");
+        return this.http.post(this.MessageUrl+"publicforuser/",JSON.stringify({user_id: user_id}),{headers: header})
+            .map((res) => {
+                console.log(res.json());
+                return res.json();
+            })
+            .catch((err) => {
+                console.log(err);
+                return Observable.throw(err.json() || 'Server Error');
+            });
+    }
     
 }
