@@ -6,7 +6,5 @@
     <button (click)="sendMessage(inputMsg.value)">Send message</button>
 </div>
 <div *ngIf="messages">
-    <ul>
-        <li *ngFor="let message of messages">{{message.user.username}} : {{message.message}}</li>
-    </ul>
+    <message-list [messages]="messages"></message-list>
 </div>
